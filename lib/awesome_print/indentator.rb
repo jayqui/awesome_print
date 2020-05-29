@@ -8,9 +8,9 @@ module AwesomePrint
       @shift_width = indentation.freeze
     end
 
-    def indent
+    def indent(&block)
       @indentation += shift_width
-      yield
+      block.call if block_given?
     ensure
       @indentation -= shift_width
     end
